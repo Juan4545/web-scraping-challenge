@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Scraping</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+    <div class="container">
+      <div class="row row-grid" style="background-color:lightslategray;">
+        <div class="col-md-7">
+          <h3>Latest Mars News</h3>
+          <p>{{ dict_mars.title }}</p>
+          <p>{{ dict_mars.text }}</p>
+          <br>
+          <div class="row">
+            <h3>Featured Mars Image</h3>
+            <img src="{{ dict_mars.featured_image_url}}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
+      </div>
+        </div>
+    <br>
+        <div class="col-md-5">
+          <div class="card">
+                        <div class="card-body text-white bg-dark">
+                            <h3 class="card-title">Current Weather on Mars</h3>
+                            <p class="card-text">{{ dict_mars.mars_weather }}</p>
+                        </div>
+            <br>
+            <h3>Mars Facts</h3>
+                    <div style="max-width: 450px; max-height: 150px; font-size: 15px; margin-bottom: 65px;">
+                        {{ dict_mars.Mars_facts|safe}}
+                    </div>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+            <div div class="container">
+              <div class="jumbotron text-center">
+                <h2>Mars Hemispheres</h2>
+              </div>
+                    <div class="card-deck">
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="row">
+                                {% for item in dict_mars.Mars_Hemispheres %}
+                                <div class="col-md-6">
+                                    <div class="card text-white bg-dark">
+                                        <img class="card-img-top" src="{{ item.img_url }}" style="max-width:10%/>
+                                        <div class="card-body">
+                                            <p class="card-text">{{ item.title }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+</div>
+  </div>
+</body>
+
+</html>
